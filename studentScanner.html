@@ -100,20 +100,14 @@ let scanning = false;
 
 qrc.callback = res => {
   if (res) {
+    console.log("HA")
    if(res===str){
+   
     window.location.replace("https://codewithkaint.github.io/form_website/");
-    scanning = false;
-canvasElement.innerHTML=res
-
-    video.srcObject.getTracks().forEach(track => {
-      track.stop();
-    });
-
-    qrResult.hidden = false;
-    canvasElement.hidden = true;
-    btnScanQR.hidden = false;
+   
    }
    else{
+    console.log("NHI")
     navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -127,7 +121,16 @@ canvasElement.innerHTML=res
       tick();
       scan();});
    }
-    
+   scanning = false;
+
+
+    video.srcObject.getTracks().forEach(track => {
+      track.stop();
+    });
+
+    qrResult.hidden = false;
+    canvasElement.hidden = true;
+    btnScanQR.hidden = false;
    
   }
 };
