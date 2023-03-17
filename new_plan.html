@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="loader"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+   <script>
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBOpTDqiqPmW6vEbndljiUcV7RvZImE0lo",
+            authDomain: "checkvalidity-7839e.firebaseapp.com",
+            databaseURL: "https://checkvalidity-7839e-default-rtdb.firebaseio.com",
+            projectId: "checkvalidity-7839e",
+            storageBucket: "checkvalidity-7839e.appspot.com",
+            messagingSenderId: "1031538482529",
+            appId: "1:1031538482529:web:e1f2f9e856a44bcac0b920",
+
+        };
+
+        firebase.initializeApp(firebaseConfig)
+        var newCode = firebase.database().ref("checkValidity");
+        var fireb = firebase.database().ref("checkValidity")
+        let c = 1
+        let str 
+function check() {
+    
+
+          fireb.on("value", function (snapshot) {
+                 var data = snapshot.val()
+
+for (let i in data) {
+
+                      str = data[i].key
+                 if (window.location.href == str){
+             window.location.replace("https://codewithkaint.github.io/form_website/");
+                    
+                 }else{console.log(1)
+                    check()
+                 }
+                  }
+             })
+         }
+
+check()
+
+
+</script>
+
+</body>
+
+</html>
